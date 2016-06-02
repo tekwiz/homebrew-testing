@@ -13,6 +13,7 @@ class Fontforge < Formula
 
   option "with-giflib", "Build with GIF support"
   option "with-extra-tools", "Build with additional font tools"
+  option "with-x", "Build with the X Window System"
 
   deprecated_option "with-gif" => "with-giflib"
 
@@ -67,8 +68,7 @@ class Fontforge < Formula
       --with-pythonbinary=#{which "python2.7"}
     ]
 
-    args << (build.with?("x") ? "--with-x" : "--without-x")
-
+    args << "--with-x" if build.with? "x"
     args << "--without-libpng" if build.without? "libpng"
     args << "--without-libjpeg" if build.without? "jpeg"
     args << "--without-libtiff" if build.without? "libtiff"
