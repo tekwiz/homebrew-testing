@@ -67,7 +67,8 @@ class Fontforge < Formula
       --with-pythonbinary=#{which "python2.7"}
     ]
 
-    args << "--without-x" if build.without? "x"
+    args << (build.with?("x") ? "--with-x" : "--without-x")
+
     args << "--without-libpng" if build.without? "libpng"
     args << "--without-libjpeg" if build.without? "jpeg"
     args << "--without-libtiff" if build.without? "libtiff"
